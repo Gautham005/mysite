@@ -17,16 +17,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 
-from blog.views import home
+from blog.views import home, signup
 #from polls import views
 from mysite import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/' , include('django.contrib.auth.urls')),
+    url(r'^accounts/signup/$',signup,name="signup"),
 
-
-    # url(r'^$', views.QuestionListView.as_view().index, name="home"),
+                  # url(r'^$', views.QuestionListView.as_view().index, name="home"),
     # url(r'^(?P<id>[0-9]+)/$',views.QuestionDetailsView.as_view(), name="question_name"),
     # url(r'^(?P<id>[0-9]+)/result/$', views.question_result,name="view_result"),
     # url(r'^(?P<id>[0-9]+)/vote/$', views.question_vote),

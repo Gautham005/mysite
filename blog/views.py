@@ -51,7 +51,7 @@ def edit_post(request,no):
             post.is_published = request.POST('is_published')
         post.save()
         return redirect('post',post.id)
-def delete_psot(request, id):
+def delete_post(request, id):
     if Post.objects.get(id=id) is not None:
         Post.objects.get(id=id).delete()
         if Post.user.username ==request.user.username:
@@ -61,7 +61,34 @@ def delete_psot(request, id):
 
 class DeletePostView(generic.DeleteView):
     model=Post
-    sucess_url='/'
+    success_url='/'
+
+def signup(request):
+    template='registration/signup.html'
+    context={}
+    if request.method =='POST':
+        firstname = request.POST['firstname']
+        lastname=request.POST['lastname']
+        email=request.POST['email']
+        username=request.POST['username']
+        password1=request.POST['password1']
+        password2=request.POST['password2']
+        print(User.objects.check(a))
+        if len(user)!=0:
+            context['errors']='Email is already taken'
+            redirect(request,template,context)
+        user=User.objects.get(username=username)
+        if len(user)!=0:
+            context['errors']="Username is already used"
+            redirect(request,template,context)
+
+        if password1==password2:
+            user=User(firstname=firstname,lastname=lastname,email=email,username=username,password1=password1,password2=password2)
+            user.set_password(password1)
+            user.save()
+            return redirect('login')
+    return render(request,template,context)
+
 
 
 def post_detail(request,no):
