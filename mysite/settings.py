@@ -4,9 +4,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
+# Quick-sta - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^u7#civt%yl1u#yp8#sbvuqk6!!_3_n_q&5(f1oj)8n8h6vd2z'
 
@@ -71,7 +70,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Password validationsasafas
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
